@@ -178,23 +178,10 @@
         var last_visit = amplify.store('last_visit') || now;
         var num_visits = amplify.store('num_visits') || 0;
 
-        console.log('before', num_visits, last_visit);
-
         num_visits++;
 
         amplify.store('last_visit', now);
         amplify.store('num_visits', num_visits);
-
-        console.log('after', num_visits, last_visit);
-
-        /*
-        cookie.set('last_visit', '' + now, {
-            expires: 30 // expires in a month
-        });
-        cookie.set('num_visits', '' + num_visits, {
-            expires: 30 // expires in a month
-        });
-        /**/
 
         var i = 0;
         while ((i < entries.length) && (entries[i].date > last_visit)) {
