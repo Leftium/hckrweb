@@ -1,4 +1,4 @@
-(function(w){
+﻿(function(w){
 	var d = w.document;
 
 	var $ = w.$ = function(id){
@@ -45,7 +45,7 @@
 			if (str){
 				str = str.replace(/^\s+|\s+$/g, ''); // trim
 				if (str.toLowerCase() != title.toLowerCase()){
-					title = str + ' � ' + title;
+					title = str + ' – ' + title;
 				}
 			}
 			document.title = title;
