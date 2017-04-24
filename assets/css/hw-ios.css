@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Inconsolata);
-
 html{
 	height: 100%;
 }
@@ -682,10 +680,10 @@ ol.grouped-tableview-links li>a.disclosure.tappable-active:after{
 	margin: 0;
 	padding: 0;
 }
-.view .post-content header h1 a{
+.view .post-content header a{
 	display: block;
 }
-.view .post-content header h1 a .link-text{
+.view .post-content header a .link-text{
 	font-size: 13px;
 }
 .view .post-content header .metadata{
@@ -707,7 +705,7 @@ ol.grouped-tableview-links li>a.disclosure.tappable-active:after{
 	font-size: 17px;
 	line-height: 1.2em;
 }
-.view .post-content header h1 a{
+.view .post-content header > a{
 	color: #000;
 	text-decoration: none;
 }
@@ -805,6 +803,9 @@ ol.grouped-tableview-links li>a.disclosure.tappable-active:after{
 	margin: 0;
 	display: -webkit-box;
 	display: box;
+}
+.view section.comments p.metadata.deleted{
+	margin-bottom: 8px;
 }
 .view section.comments p.metadata .user{
 	color: #b23914;
@@ -921,13 +922,13 @@ ol.grouped-tableview-links li>a.disclosure.tappable-active:after{
 }
 
 #y-icon{
-	background: transparent url(../../icons/touch-icon-114.png) no-repeat;
+	background: transparent url(../../icons/icon.svg) no-repeat;
 	background-size: 57px 57px;
 	width: 57px;
 	height: 57px;
 	float: left;
 	border-radius: 9px;
-	box-shadow: 0 2px 2px rgba(0,0,0,.5);
+	box-shadow: 0 1px 1px rgba(0,0,0,.5);
 }
 #app-desc{
 	margin-left: 67px;

@@ -1,7 +1,5 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic);
-
 body{
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
@@ -25,6 +23,7 @@ pre{
 }
 pre, code{
 	font-family: Menlo, Monaco, Inconsolata, Consolas, "Lucida Console", monospace;
+	font-size: 12px;
 }
 
 #outdated-browser{
@@ -43,8 +42,7 @@ pre, code{
 	display: inline-block;
 	width: 14px;
 	height: 18px;
-	background: transparent url(../images/web/refresh-icon.png) no-repeat;
-	background-image: url(../images/web/refresh-icon.svg), none;
+	background: transparent url(../images/web/refresh-icon.svg) no-repeat;
 	background-size: 14px 18px;
 	vertical-align: middle;
 	overflow: hidden;
@@ -72,6 +70,8 @@ pre, code{
 	top: 0;
 	right: 0;
 	z-index: 3;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
 }
 .header-button{
 	position: absolute;
@@ -127,8 +127,7 @@ pre, code{
 	overflow: hidden;
 	text-indent: -999px;
 	min-width: 32px;
-	background-image: url(../images/web/home-icon.png);
-	background-image: url(../images/web/home-icon.svg), none;
+	background-image: url(../images/web/home-icon.svg);
 	background-size: 19.5px 17px;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -138,7 +137,7 @@ pre, code{
 	cursor: default;
 	padding: 0;
 	text-align: center;
-	font-size: 18px;
+	font-size: 1em;
 	font-weight: normal;
 	margin: 0;
 	white-space: nowrap;
@@ -163,20 +162,18 @@ pre, code{
 }
 .view>.scroll .loader,
 .view>.scroll .load-error{
-	font-size: 16px;
-	color: #666;
+	font-size: 14px;
 	color: #666;
 	text-align: center;
 	padding: 50px 0;
 }
 .view>.scroll .load-error button{
 	border: 0;
-	font-size: 14px;
 	height: 30px;
 	line-height: 30px;
 	cursor: pointer;
 	padding: 0 20px;
-	font-weight: bold;
+	font-weight: 500;
 	color: #666;
 	margin: 6px auto 4px;
 	background-color: #f0f0ea;
@@ -207,8 +204,7 @@ pre, code{
 	position: relative;
 }
 .tableview-links li>a{
-	font-size: 14px;
-	line-height: 1.3em;
+	line-height: 1.2em;
 	color: #000;
 	display: block;
 	padding: 10px 5px;
@@ -224,6 +220,7 @@ pre, code{
 	pointer-events: none;
 }
 .tableview-links li>a .number{
+	font-weight: lighter;
 	text-align: right;
 	width: 3.5ex;
 	color: #666d74;
@@ -236,13 +233,12 @@ pre, code{
 	padding-left: 5px;
 }
 .tableview-links li>a .story b{
-	font-weight: 600;
+	font-weight: normal;
 }
 .tableview-links li>a .metadata{
 	display: block;
-	font-size: 12px;
+	font-size: 14px;
 	color: #666d74;
-	line-height: 1.2em;
 }
 .tableview-links li>a:hover .link-text{
 	text-decoration: underline;
@@ -265,8 +261,7 @@ pre, code{
 	display: inline-block;
 	width: 17px;
 	height: 17px;
-	background: transparent url(../images/web/comments-icon.png) no-repeat;
-	background-image: url(../images/web/comments-icon.svg), none;
+	background: transparent url(../images/web/comments-icon.svg) no-repeat;
 	background-size: 17px 17px;
 	margin: 15px 0;
 }
@@ -281,13 +276,15 @@ pre, code{
 	display: block;
 	text-align: center;
 }
+.tableview-links li>a.more-link:active{
+	opacity: .5;
+}
 
 .grouped-tableview{
 	margin: 10px 9px 11px;
 	padding: 10px;
 	border: 1px solid #E0E0E0;
 	background-color: #fff;
-	font-size: 13px;
 	border-radius: 2px;
 	overflow: hidden;
 }
@@ -333,7 +330,6 @@ ol.grouped-tableview-links li{
 ul.grouped-tableview-links li>a,
 ol.grouped-tableview-links li>a{
 	color: #000;
-	font-size: 16px;
 	display: inline-block;
 	box-sizing: border-box;
 	width: 100%;
@@ -341,6 +337,7 @@ ol.grouped-tableview-links li>a{
 	text-decoration: none;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	line-height: 1.2em;
 }
 ul.grouped-tableview-links li>a:hover,
 ol.grouped-tableview-links li>a:hover{
@@ -353,20 +350,28 @@ ol.grouped-tableview-links li>a:hover{
 }
 .view .post-content header{
 	padding: 10px 15px;
+	line-height: 1.2em;
 }
 .view .post-content header h1,
 .view .post-content header p{
+	font-size: 1em;
 	margin: 0;
 	padding: 0;
 }
-.view .post-content header h1 a{
+.view .post-content header a{
 	display: block;
+	text-decoration: none;
 }
-.view .post-content header h1 a .link-text{
-	font-size: 13px;
+.view .post-content header h1{
+	color: #000;
+	font-weight: normal;
+	font-size: 1em;
+}
+.view .post-content header .link-text{
+	font-size: 14px;
 }
 .view .post-content header .metadata{
-	font-size: 13px;
+	font-size: 14px;
 	color: #666d74;
 }
 .view .post-content header .metadata a.external-link{
@@ -377,20 +382,11 @@ ol.grouped-tableview-links li>a:hover{
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	padding-left: 16px;
-	background: transparent url(../images/external-arrow.png) no-repeat 0 50%;
-	background-image: url(../images/web/external-arrow.svg), none;
+	background: transparent url(../images/web/external-arrow.svg) no-repeat 0 50%;
 	background-size: 12px 10px;
 }
 .view .post-content header .metadata a.external-link:hover{
 	color: #007aff;
-}
-.view .post-content header h1{
-	font-size: 17px;
-	line-height: 1.2em;
-}
-.view .post-content header h1 a{
-	color: #000;
-	text-decoration: none;
 }
 .view .post-content header + .grouped-tableview{
 	margin-top: 0;
@@ -408,6 +404,7 @@ ol.grouped-tableview-links li>a:hover{
 	width: 100%;
 }
 .view .post-content .poll li .poll-details b{
+	font-weight: normal;
 	display: table-cell;
 	color: #333;
 }
@@ -441,7 +438,7 @@ ol.grouped-tableview-links li>a:hover{
 }
 
 .view section.comments{
-	font-size: 13px;
+	font-size: 14px;
 	background-color: #fff;
 	border-top: 1px solid #E0E0E0;
 	border-bottom: 1px solid #E0E0E0;
@@ -463,8 +460,7 @@ ol.grouped-tableview-links li>a:hover{
 .view section.comments ul ul li{
 	padding: 0 0 0 15px;
 	border: 0;
-	background: transparent url(../images/comment-arrow.png) no-repeat 0 4px;
-	background-image: url(../images/web/comment-arrow.svg), none;
+	background: transparent url(../images/web/comment-arrow.svg) no-repeat 0 4px;
 	background-size: 10px 9px;
 	color: #333;
 }
@@ -477,8 +473,15 @@ ol.grouped-tableview-links li>a:hover{
 	margin: 0;
 }
 .view section.comments p.metadata .user{
+	font-weight: normal;
 	float: left;
 	color: #bf223f;
+}
+.view section.comments p.metadata.deleted{
+	margin-bottom: 8px;
+}
+.view section.comments p.metadata.deleted span{
+	float: left;
 }
 .view section.comments p.metadata .user.op:after{
 	content: 'OP';
@@ -506,7 +509,6 @@ ol.grouped-tableview-links li>a:hover{
 .view section.comments p.no-comments{
 	text-align: center;
 	margin: 50px 0;
-	font-size: 16px;
 	color: #666;
 }
 .view section.comments button.comments-toggle{
@@ -515,8 +517,7 @@ ol.grouped-tableview-links li>a:hover{
 	line-height: 22px;
 	cursor: pointer;
 	padding: 0 13px;
-	font-weight: bold;
-	font-size: 12px;
+	font-size: 1em;
 	color: #666;
 	margin: 2px 0 6px;
 	background-color: #f0f0ea;
@@ -532,16 +533,6 @@ ol.grouped-tableview-links li>a:hover{
 }
 .view section.comments li.more-link-container{
 	padding: 0;
-}
-.view section.comments li>a.more-link{
-	font-size: 15px;
-	text-decoration: none;
-	cursor: pointer;
-	line-height: 3em;
-	padding: 10px;
-	display: block;
-	color: #007aff;
-	text-align: center;
 }
 
 .link-text{
@@ -564,19 +555,23 @@ ol.grouped-tableview-links li>a:hover{
 }
 
 #y-icon{
-	background: transparent url(../../icons/touch-icon-114.png) no-repeat;
-	background-image: url(../../icons/icon.svg), none;
+	background: transparent url(../../icons/icon.svg) no-repeat;
 	background-size: 57px 57px;
 	width: 57px;
 	height: 57px;
 	float: left;
+	border: 1px solid #eee;
 	border-radius: 4px;
 }
 #app-desc{
 	margin-left: 67px;
+	font-size: 14px;
+	color: #666d74;
 }
 #app-desc strong{
-	font-size: 18px;
+	color: #000;
+	font-size: 1rem;
+	font-weight: normal;
 }
 
 @-ms-viewport{
@@ -599,8 +594,6 @@ ol.grouped-tableview-links li>a:hover{
 		box-shadow: 0 0 1px #aaa;
 	}
 	.view>header{
-		border-top-left-radius: 2px;
-		border-top-right-radius: 2px;
 		position: static;
 	}
 	.view>.scroll{
