@@ -59,7 +59,7 @@
 					error(e);
 				};
 				if (r.readyState <= 1 || supportXDomainRequest){ // XDomainRequest doesn't have readyState
-					r.open('GET', url, true);
+					r.open('GET', url + '?' + date(), true);
 					r.send();
 				}
 				requests[url] = r;
@@ -113,11 +113,11 @@
 
 		urls: urls,
 
-		news: function(success, error){
+		_news: function(success, error){
 			reqs('news', success, error);
 		},
 
-		news2: function(success, error){
+		_news2: function(success, error){
 			reqs('news2', success, error);
 		},
 
@@ -130,6 +130,108 @@
 		}
 
 	};
+
+
+    // from: http://www.learningjquery.com/2009/04/better-stronger-safer-jquerify-bookmarklet
+    // more or less stolen form jquery core and adapted by paul irish
+    function getScript(url,success) {
+        var script=document.createElement('script');
+        script.src=url;
+        var head=document.getElementsByTagName('head')[0],
+            done=false;
+        // Attach handlers for all browsers
+        script.onload=script.onreadystatechange = function(){
+            if ( !done && (!this.readyState
+                        || this.readyState == 'loaded'
+                        || this.readyState == 'complete') ) {
+                done=true;
+                success();
+                script.onload = script.onreadystatechange = null;
+                head.removeChild(script);
+            }
+        };
+        head.appendChild(script);
+    }
+
+    function to_hnapi(entry) {
+        return {
+            id: entry.id,
+            title: entry.link_text,
+            url: entry.link,
+            domain: entry.source,
+            points: entry.points,
+            user: entry.submitter,
+            time_ago: relativeDate(entry.date * 1000),
+            comments_count: entry.comments,
+            type: 'link'
+        }
+    };
+
+    var hnapi_entries1 = [];
+    var hnapi_entries2 = [];
+
+    function process_entries(entries) {
+        hnapi_entries1 = [];
+        hnapi_entries2 = [];
+
+        var now = Math.floor(new Date() / 1000);
+
+        var last_visit = amplify.store('last_visit') || now;
+        var num_visits = amplify.store('num_visits') || 0;
+
+        num_visits++;
+
+        amplify.store('last_visit', now);
+        amplify.store('num_visits', num_visits);
+
+        var i = 0;
+        while ((i < entries.length) && (entries[i].date > last_visit)) {
+            var hnapi_entry = to_hnapi(entries[i]);
+            i++;
+            hnapi_entry.i = i;
+            hnapi_entries1.push(hnapi_entry);
+        }
+
+        hnapi_entries1.push({
+            visit_count: num_visits,
+            time_ago: relativeDate(last_visit * 1000),
+            type: 'visit'
+        });
+
+        while (i < entries.length) {
+            var hnapi_entry = to_hnapi(entries[i]);
+            i++;
+            hnapi_entry.i = i;
+            hnapi_entries2.push(hnapi_entry);
+        }
+    }
+
+    // Return new items since last last visit.
+    hnapi.news = function(callback) {
+        entries = null;
+        getScript('//hckrnews.com/data/latest.js?' + date(), function() {
+            if (entries) {
+                process_entries(entries);
+                callback(hnapi_entries1);
+            } else {
+                callback(null);
+            }
+        });
+    }
+
+    // Return remaining items before last visit.
+    hnapi.news2 = function(callback) {
+        if (entries) {
+            callback(hnapi_entries2);
+        } else {
+            callback(null);
+        }
+    }
+
+
+
+
+
 
 	w.hnapi = hnapi;
 

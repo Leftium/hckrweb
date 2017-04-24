@@ -106,6 +106,10 @@
 			}
 			item.i_point = item.points == 1 ? 'point' : 'points';
 			item.i_comment = item.comments_count == 1 ? 'comment' : 'comments';
+			if (item.type == 'visit') {
+				item.i_visit = item.visit_count == 1 ? 'refresh' : 'refreshes';
+				return tmpl('visit', item)
+			}
 			return tmpl('post', item);
 		},
 		markupStories: function(data, i){
@@ -113,7 +117,7 @@
 			if (!i) i = 1;
 			var markupStory = hw.news.markupStory;
 			data.forEach(function(item){
-				item.i = i++;
+				// item.i = i++;
 				html += markupStory(item);
 			});
 			return html;
@@ -230,8 +234,9 @@
 			}
 		},
 		reload: function(){
+			amplify.store('hacker-news-cached', null); // force cache flush
 			hw.news.render({
-				delay: 300 // Cheat a little to make user think that it's doing something
+				// delay: 300 // Cheat a little to make user think that it's doing something
 			});
 		},
 		more: function(target){
