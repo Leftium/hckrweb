@@ -208,7 +208,7 @@
     // Return new items since last last visit.
     hnapi.news = function(callback) {
         entries = null;
-        getScript('http://hckrnews.com/data/latest.js?' + date(), function() {
+        getScript('//hckrnews.com/data/latest.js?' + date(), function() {
             if (entries) {
                 process_entries(entries);
                 callback(hnapi_entries1);
