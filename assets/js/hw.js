@@ -272,7 +272,7 @@
 				var data = clone(_data),
 					tmpl1 = tmpl('post-comments');
 
-				data.has_post = !!data.title;
+				data.has_post = !!data.title || (data.type == 'comment');
 				if (!data.has_post){
 					hw.setTitle();
 					$commentsHeading.innerHTML = '';
