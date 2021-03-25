@@ -216,11 +216,11 @@
 						showError();
 						return;
 					}
-					amplify.store('hacker-news', data);
-					amplify.store('hacker-news-cached', true, {
-						expires: 1000 * 60 * 10 // 10 minutes
-					});
-					amplify.store('hacker-news2', null);
+					// amplify.store('hacker-news', data);
+					// amplify.store('hacker-news-cached', true, {
+					// 	expires: 1000 * 60 * 10 // 10 minutes
+					// });
+					// amplify.store('hacker-news2', null);
 					loadNews(data);
 				}, function (e) {
 					loadingNews = false;
@@ -229,7 +229,7 @@
 			}
 		},
 		reload: function () {
-			amplify.store('hacker-news-cached', null); // force cache flush
+			amplify.store('news-latest', null); // force cache flush
 			hw.news.render({
 				// delay: 300 // Cheat a little to make user think that it's doing something
 			});

@@ -168,8 +168,6 @@
 		}
 	};
 
-	var hnapi_entries = [];
-
 	var now = Math.floor(new Date() / 1000);
 
 	var last_visit = amplify.store('last_visit') || now;
@@ -183,7 +181,7 @@
 
 	var last_time = Number.MAX_SAFE_INTEGER
 	function process_entries(entries) {
-		hnapi_entries = [];
+		var hnapi_entries = [];
 
 		var last_visit_item = {
 			visit_count: num_visits,
@@ -201,33 +199,47 @@
 			hnapi_entry.i = i + 1;
 			hnapi_entries.push(hnapi_entry);
 		}
+		return hnapi_entries;
 	}
 
 	hnapi.news = function (date, success, error) {
-		var url = 'https://p.leftium.com/p?u=https://hckrnews.com/data/'
-		if (date) {
-			url += date + '.js';
-		} else {
-			url += 'latest.js';
-		}
-		p1 = fetch(url);
-		text = p1.then(function (res) {
-			p2 = res.json();
-			p2.then(function (entries) {
-				if (entries) {
-					lastItem = entries[entries.length - 1];
-					day = dayjs.unix(lastItem.time);
-					day = day.subtract(1, 'day');
-					day = day.format('YYYYMMDD');
-					amplify.store('next', day);
-					process_entries(entries);
-					success(hnapi_entries);
-				} else {
-					success(null);
-				}
+		date = date || 'latest';
+		var key = 'news-' + date;
+		var url = 'https://p.leftium.com/p?u=https://hckrnews.com/data/' + date + '.js';
 
+		var expires = (date == 'latest') ? 60 * 1000 : null;
+
+		function onSuccess(data) {
+			lastItem = data[data.length - 1];
+			day = dayjs.unix(lastItem.time);
+			day = day.subtract(1, 'day');
+			day = day.format('YYYYMMDD');
+			amplify.store('next', day);
+			var results = process_entries(data);
+			success(results);
+		};
+
+		var data = amplify.store(key);
+
+		if (data) {
+			console.log('HIT:  ' + key);
+			onSuccess(data);
+		} else {
+			console.log('MISS: ' + key);
+			p1 = fetch(url);
+			text = p1.then(function (res) {
+				p2 = res.json();
+				p2.then(function (data) {
+					if (data) {
+						amplify.store(key, data, { expires: expires });
+						onSuccess(data);
+					} else {
+						error(null);
+					}
+
+				});
 			});
-		});
+		}
 	}
 
 	w.hnapi = hnapi;
