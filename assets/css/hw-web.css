@@ -261,7 +261,7 @@ pre, code{
 	display: inline-block;
 	width: 17px;
 	height: 17px;
-	background: transparent url(../images/web/comments-icon.svg) no-repeat;
+	background: transparent url(../images/web/comments-icon.png) no-repeat;
 	background-size: 17px 17px;
 	margin: 15px 0;
 }
