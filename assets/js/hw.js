@@ -183,9 +183,10 @@
 			var loadNews = function (_data) {
 				var data = _data.slice();
 
+				var date = amplify.store('next');
 				var html = '<ul class="tableview tableview-links" id="hwlist">'
 					+ hw.news.markupStories(data)
-					+ '<li><a class="more-link">More&hellip;<span class="loader"><i class="icon-loading"></i></span></a></li>'
+					+ '<li><a class="more-link">More&hellip; (' + date + ') <span class="loader"><i class="icon-loading"></i></span></a></li>'
 					+ '</ul>';
 				$homeScrollSection.innerHTML = html;
 				hw.pub('onRenderNews');
@@ -230,6 +231,7 @@
 		},
 		reload: function () {
 			amplify.store('news-latest', null); // force cache flush
+			amplify.store('next', null);
 			hw.news.render({
 				// delay: 300 // Cheat a little to make user think that it's doing something
 			});
@@ -249,7 +251,8 @@
 				var data = news.slice();
 				var html = hw.news.markupStories(data);
 				$('hwlist').insertAdjacentHTML('beforeend', html);
-				$('hwlist').insertAdjacentHTML('beforeend', '<li><a class="more-link">More&hellip;<span class="loader"></span></a></li>');
+				var date = amplify.store('next');
+				$('hwlist').insertAdjacentHTML('beforeend', '<li><a class="more-link">More&hellip; (' + date + ') <span class="loader"></span></a></li>');
 			});
 		}
 	};
@@ -452,6 +455,7 @@
 	};
 
 	hw.init = function () {
+		amplify.store('next', null);
 		hw.news.render();
 		ruto.init();
 	};
