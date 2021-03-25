@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -16,7 +16,8 @@ module.exports = function(grunt) {
 						'assets/js/libs/hogan.js',
 						'assets/js/libs/hnapi.js',
 						'assets/js/libs/ibento.js',
-                        'assets/js/libs/relative-date.js',
+						'assets/js/libs/relative-date.js',
+						'assets/js/libs/dayjs.js',
 						'assets/js/templates.js',
 						'assets/js/hw.js',
 						'assets/js/hw-web.js'
@@ -38,7 +39,8 @@ module.exports = function(grunt) {
 						'assets/js/libs/tappable.js',
 						'assets/js/libs/tween.js',
 						'assets/js/libs/requestanimationframe.js',
-                        'assets/js/libs/relative-date.js',
+						'assets/js/libs/relative-date.js',
+						'assets/js/libs/dayjs.js',
 						'assets/js/templates.js',
 						'assets/js/hw.js',
 						'assets/js/hw-ios.js'
@@ -60,7 +62,8 @@ module.exports = function(grunt) {
 						'assets/js/libs/tappable.js',
 						'assets/js/libs/tween.js',
 						'assets/js/libs/requestanimationframe.js',
-                        'assets/js/libs/relative-date.js',
+						'assets/js/libs/relative-date.js',
+						'assets/js/libs/dayjs.js',
 						'assets/js/templates.js',
 						'assets/js/hw.js',
 						'assets/js/hw-ios-2.js'

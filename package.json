@@ -2,6 +2,7 @@
   "name": "hackerweb",
   "version": "1.0.0",
   "devDependencies": {
+    "dayjs": "^1.10.4",
     "grunt": "~1.0.1",
     "grunt-concurrent": "~2.3.0",
     "grunt-contrib-connect": "~1.0.2",
