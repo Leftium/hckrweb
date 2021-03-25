@@ -170,37 +170,35 @@
 
 	var hnapi_entries = [];
 
+	var now = Math.floor(new Date() / 1000);
+
+	var last_visit = amplify.store('last_visit') || now;
+	var num_visits = amplify.store('num_visits') || 0;
+
+	num_visits++;
+
+	amplify.store('last_visit', now);
+	amplify.store('num_visits', num_visits);
+
+
+	var last_time = Number.MAX_SAFE_INTEGER
 	function process_entries(entries) {
 		hnapi_entries = [];
 
-		var now = Math.floor(new Date() / 1000);
-
-		var last_visit = amplify.store('last_visit') || now;
-		var num_visits = amplify.store('num_visits') || 0;
-
-		num_visits++;
-
-		amplify.store('last_visit', now);
-		amplify.store('num_visits', num_visits);
-
-		var i = 0;
-		while ((i < entries.length) && (entries[i].date > last_visit)) {
-			var hnapi_entry = to_hnapi(entries[i]);
-			i++;
-			hnapi_entry.i = i;
-			hnapi_entries.push(hnapi_entry);
-		}
-
-		hnapi_entries.push({
+		var last_visit_item = {
 			visit_count: num_visits,
 			time_ago: relativeDate(last_visit * 1000),
 			type: 'visit'
-		});
+		};
 
-		while (i < entries.length) {
+		for (i = 0; i < entries.length; i++) {
+			if ((last_time > last_visit) && (last_visit >= entries[i].date)) {
+				hnapi_entries.push(last_visit_item);
+			}
+			last_time = entries[i].date;
+
 			var hnapi_entry = to_hnapi(entries[i]);
-			i++;
-			hnapi_entry.i = i;
+			hnapi_entry.i = i + 1;
 			hnapi_entries.push(hnapi_entry);
 		}
 	}
