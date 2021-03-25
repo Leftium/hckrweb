@@ -205,30 +205,13 @@
 		}
 	}
 
-	hnapi.news = function (success, error) {
-		url = 'https://p.leftium.com/p?u=https://hckrnews.com/data/latest.js';
-		p1 = fetch(url);
-		text = p1.then(function (res) {
-			p2 = res.json();
-			p2.then(function (entries) {
-				if (entries) {
-					lastItem = entries[entries.length - 1];
-					day = dayjs.unix(lastItem.time);
-					day = day.subtract(1, 'day');
-					day = day.format('YYYYMMDD');
-					amplify.store('next', day);
-					process_entries(entries);
-					success(hnapi_entries);
-				} else {
-					success(null);
-				}
-
-			});
-		});
-	}
-
-	hnapi.newsX = function (date, success, error) {
-		url = 'https://p.leftium.com/p?u=https://hckrnews.com/data/' + date + '.js';
+	hnapi.news = function (date, success, error) {
+		var url = 'https://p.leftium.com/p?u=https://hckrnews.com/data/'
+		if (date) {
+			url += date + '.js';
+		} else {
+			url += 'latest.js';
+		}
 		p1 = fetch(url);
 		text = p1.then(function (res) {
 			p2 = res.json();

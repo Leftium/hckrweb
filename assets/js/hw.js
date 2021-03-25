@@ -183,13 +183,6 @@
 			var loadNews = function (_data) {
 				var data = _data.slice();
 
-
-				lastItem = data[data.length - 1];
-				day = dayjs.unix(lastItem.time);
-				day = day.subtract(1, 'day');
-				day = day.format('YYYYMMDD');
-				amplify.store('next', day);
-
 				var html = '<ul class="tableview tableview-links" id="hwlist">'
 					+ hw.news.markupStories(data)
 					+ '<li><a class="more-link">More&hellip;<span class="loader"><i class="icon-loading"></i></span></a></li>'
@@ -217,7 +210,7 @@
 					$homeScrollSection.innerHTML = tmpl1.render({ load_error: true });
 					hw.pub('logAPIError', 'news');
 				};
-				hnapi.news(function (data) {
+				hnapi.news(null, function (data) {
 					loadingNews = false;
 					if (!data || data.error) {
 						showError();
@@ -229,7 +222,6 @@
 					});
 					amplify.store('hacker-news2', null);
 					loadNews(data);
-					$('hwlist').insertAdjacentHTML('beforeend', '<li><a class="more-link">More&hellip;<span class="loader"></span></a></li>');
 				}, function (e) {
 					loadingNews = false;
 					showError();
@@ -248,7 +240,7 @@
 			var news2 = amplify.store('hacker-news2');
 
 			var date = amplify.store('next');
-			hnapi.newsX(date, function (news) {
+			hnapi.news(date, function (news) {
 				target.classList.remove('loading');
 				var targetParent = target.parentNode;
 				if (!targetParent) return;
