@@ -6,8 +6,9 @@ module.exports = function (grunt) {
 			web: {
 				options: {
 					sourceMap: 'js/hw-web.min.js.map',
-					maxLineLen: 500,
-					screwIE8: true
+					output: {
+						max_line_len: 500,
+					},
 				},
 				files: {
 					'js/hw-web.min.js': [
@@ -27,8 +28,9 @@ module.exports = function (grunt) {
 			ios: {
 				options: {
 					sourceMap: 'js/hw-ios.min.js.map',
-					maxLineLen: 500,
-					screwIE8: true
+					output: {
+						max_line_len: 500,
+					},
 				},
 				files: {
 					'js/hw-ios.min.js': [
@@ -50,8 +52,9 @@ module.exports = function (grunt) {
 			ios2: {
 				options: {
 					sourceMap: 'js/hw-ios-2.min.js.map',
-					maxLineLen: 500,
-					screwIE8: true
+					output: {
+						max_line_len: 500,
+					},
 				},
 				files: {
 					'js/hw-ios-2.min.js': [

@@ -132,26 +132,6 @@
 	};
 
 
-	// from: http://www.learningjquery.com/2009/04/better-stronger-safer-jquerify-bookmarklet
-	// more or less stolen form jquery core and adapted by paul irish
-	function getScript(url, success) {
-		var script = document.createElement('script');
-		script.src = url;
-		var head = document.getElementsByTagName('head')[0],
-			done = false;
-		// Attach handlers for all browsers
-		script.onload = script.onreadystatechange = function () {
-			if (!done && (!this.readyState
-				|| this.readyState == 'loaded'
-				|| this.readyState == 'complete')) {
-				done = true;
-				success();
-				script.onload = script.onreadystatechange = null;
-				head.removeChild(script);
-			}
-		};
-		head.appendChild(script);
-	}
 
 	function to_hnapi(entry) {
 		return {
@@ -179,7 +159,7 @@
 	amplify.store('num_visits', num_visits);
 
 
-	var last_time = Number.MAX_SAFE_INTEGER
+	var last_time = Number.MAX_SAFE_INTEGER;
 	function process_entries(entries) {
 		var hnapi_entries = [];
 
@@ -228,10 +208,10 @@
 		var data = amplify.store(key);
 
 		if (data) {
-			// console.log('HIT:  ' + key);
+			console.log('HIT!:  ' + key);
 			onSuccess(data);
 		} else {
-			// console.log('MISS: ' + key);
+			console.log('MISS!: ' + key);
 			p1 = fetch(url);
 			text = p1.then(function (res) {
 				p2 = res.json();

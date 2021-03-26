@@ -458,6 +458,60 @@
 		amplify.store('next', null);
 		hw.news.render();
 		ruto.init();
+
+		function renderColorScheme() {
+			var link = Array.from(document.styleSheets).find(function(s){
+				return /hw.*\.css/i.test(s.href);
+			});
+			if (!link) {
+				setTimeout(renderColorScheme, 1000);
+				return;
+			}
+			var cssRule = Array.from(link.cssRules).find(function(r){
+				return r.media && /color-scheme:\s*dark/i.test(r.media.mediaText);
+			});
+			if (cssRule) {
+				$('hw-appearance-container').hidden = false;
+				var $hwAppearance = $('hw-appearance');
+				var $metaColorScheme = $('meta-color-scheme');
+				var prefersColorSchemeSupported = window.matchMedia && window.matchMedia('(prefers-color-scheme)').media !== 'not all';
+				var appearanceStorageKey = 'hw-appearance';
+				var appearance = localStorage.getItem(appearanceStorageKey) || 'auto';
+
+				function setAppearance(appearance) {
+					if (appearance === 'dark') {
+						cssRule.media.mediaText = 'screen';
+						$metaColorScheme.content = 'dark';
+					} else if (appearance === 'light') {
+						cssRule.media.mediaText = 'not all';
+						$metaColorScheme.content = 'light';
+					} else {
+						cssRule.media.mediaText = '(prefers-color-scheme: dark)';
+						$metaColorScheme.content = 'dark light';
+					}
+				};
+				setAppearance(appearance);
+		
+				if (prefersColorSchemeSupported) {
+					$hwAppearance.querySelector('[name=hw-appearance][value=auto]').parentNode.hidden = false;
+					var input = $hwAppearance.querySelector('[name=hw-appearance][value=' + appearance + ']');
+					input.checked = true;
+				} else {
+					if (!/(light|dark)/i.test(appearance)) {
+						appearance = 'light';
+					}
+					var input = $hwAppearance.querySelector('[name=hw-appearance][value="' + appearance + '"]');
+					input.checked = true;
+				}
+				$hwAppearance.onclick = function() {
+					var checkedInput = $hwAppearance.querySelector('[name=hw-appearance]:checked');
+					var appearance = checkedInput.value;
+					localStorage.setItem(appearanceStorageKey, appearance);
+					setAppearance(appearance);
+				}
+			}
+		}
+		renderColorScheme();
 	};
 
 	w.hw = hw;

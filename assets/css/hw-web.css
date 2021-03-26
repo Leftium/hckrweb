@@ -70,8 +70,6 @@ pre, code{
 	top: 0;
 	right: 0;
 	z-index: 3;
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
 }
 .header-button{
 	position: absolute;
@@ -598,5 +596,130 @@ ol.grouped-tableview-links li>a:hover{
 	}
 	.view>.scroll{
 		margin-top: 0;
+	}
+}
+
+@media (prefers-color-scheme: dark){
+	body{
+		color: rgba(255,255,255,.87);
+		background-color: #121212;
+	}
+
+	a:link{
+		color: #2988cf;
+	}
+	a:visited{
+		color: #c06dc8;
+	}
+
+	/* Home */
+	.tableview{
+		background-color: #121212;
+	}
+	.tableview-links li>a{
+		color: rgba(255,255,255,.87);
+	}
+	.tableview-links li>a:hover{
+		background-color: rgba(255,255,255,.05);
+	}
+	.tableview-links li>a:visited{
+		opacity: .38;
+	}
+	.tableview-links li>a .metadata,
+	.tableview-links li>a .number{
+		color: rgba(255,255,255,.6);
+	}
+	.tableview li,
+	.view>header{
+		border-color: rgba(255,255,255,.05);
+	}
+
+	/* Post */
+	.view>header{
+		background-color: #1e1e1e;
+	}
+	.view section.comments,
+	.header-button:hover{
+		background-color: rgba(255,255,255,.05);
+	}
+	.view.shaded>.scroll{
+		background-color: transparent;
+	}
+	.view>header h1,
+	.view .post-content header h1{
+		color: rgba(255,255,255,.87);
+	}
+	.view section.comments,
+	.view section.comments ul li{
+		border-color: rgba(255,255,255,.05);
+	}
+	.view section.comments p.metadata .user{
+		color: #e84f66;
+	}
+	.view section.comments p.metadata .user.op:after{
+		background-color: #e84f66;
+	}
+	.link-text,
+	.tableview-links li>a.more-link,
+	.view .post-content header .metadata a.external-link:hover{
+		color: #2988cf;
+	}
+	.view .post-content .poll li .poll-bar span{
+		background-color: #2988cf;
+	}
+	.view section.comments button.comments-toggle{
+		background-color: #333;
+		color: #eee
+	}
+	.view section.comments button.comments-toggle:active{
+		background-color: #555;
+	}
+	.view section.comments button.comments-toggle:hover{
+		background-color: #444;
+	}
+	.header-button button{
+		color: #ff8700;
+	}
+	.icon-refresh,
+	#view-comments .header-button-left button,
+	#view-about .header-button-left button,
+	.tableview-links li>a.detail-disclosure-button span{
+		filter: brightness(1.3);
+	}
+	.view .post-content pre,
+	.view section.comments pre{
+		background-color: rgba(255,255,255,.05);
+	}
+	.view section.comments ul ul li{
+		color: rgba(255,255,255,.6);
+	}
+
+	/* About */
+	.grouped-tableview{
+		background-color: rgba(255,255,255,.05);
+	}
+	#app-desc strong,
+	ol.grouped-tableview-links li>a,
+	ul.grouped-tableview-links li>a{
+		color: rgba(255,255,255,.87);
+	}
+	.grouped-tableview,
+	ol.grouped-tableview li,
+	ul.grouped-tableview li{
+		border-color: rgba(255,255,255,.05);
+	}
+	.view.shaded>.scroll p.foot-label,
+	.grouped-tableview p{
+		color: rgba(255,255,255,.6);
+	}
+	ol.grouped-tableview-links li>a:hover,
+	ul.grouped-tableview-links li>a:hover{
+		background-color: rgba(255,255,255,.05);
+	}
+
+	@media only screen and (min-width: 788px){
+		.view{
+			background-color: #121212;
+		}
 	}
 }
