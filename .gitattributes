@@ -7,7 +7,7 @@
 
 * text=auto !eol
 
-package-lock.json   binary
-yarn.lock           binary
-*.min.js            -diff
-*.js.map            -diff
+package-lock.json   diff=nodiff
+yarn.lock           diff=nodiff
+*.min.js            diff=nodiff
+*.js.map            diff=nodiff
