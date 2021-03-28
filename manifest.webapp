@@ -1,6 +1,6 @@
 {
-	"name": "HackerWeb",
-	"description": "A simply readable Hacker News app",
+	"name": "HckrWeb",
+	"description": "Simple, readable Hacker News app",
 	"version": "0.3",
 	"launch_path": "/",
 	"icons": {

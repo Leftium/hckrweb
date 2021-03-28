@@ -41,7 +41,7 @@
 			return t.render(data);
 		},
 		setTitle: function (str) {
-			var title = 'HackerWeb';
+			var title = 'HckrWeb';
 			if (str) {
 				str = str.replace(/^\s+|\s+$/g, ''); // trim
 				if (str.toLowerCase() != title.toLowerCase()) {
