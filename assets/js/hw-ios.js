@@ -345,7 +345,7 @@
 		inactiveClassDelay: 1000
 	});
 
-	tappable('#view-home .tableview-links li>a.detail-disclosure-button', {
+	tappable('#view-home .tableview-links li>a.detail-disclosure', {
 		noScroll: true,
 		noScrollDelay: 100,
 		onTap: function(e, target){
