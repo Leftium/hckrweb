@@ -395,9 +395,6 @@ body:not(.ios5) .view>.scroll:before{
 	pointer-events: none;
 }
 .tableview-links li>a .number{
-	text-align: right;
-	width: 3ex;
-	padding-right: 5px;
 	color: #666d74;
 }
 .tableview-links li>a .number:after{

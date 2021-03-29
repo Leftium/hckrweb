@@ -219,15 +219,9 @@ pre, code{
 }
 .tableview-links li>a .number{
 	font-weight: lighter;
-	text-align: right;
-	width: 3.5ex;
 	color: #666d74;
-	position: absolute;
-	left: 5px;
-	top: 10px;
 }
 .tableview-links li>a .story{
-	margin-left: 4ex;
 	padding-left: 5px;
 }
 .tableview-links li>a .story b{
