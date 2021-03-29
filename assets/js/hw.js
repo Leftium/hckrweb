@@ -232,6 +232,7 @@
 		reload: function () {
 			amplify.store('news-latest', null); // force cache flush
 			amplify.store('next', null);
+			hnapi.number = 1;
 			hw.news.render({
 				// delay: 300 // Cheat a little to make user think that it's doing something
 			});

@@ -160,7 +160,7 @@
 
 
 	var last_time = Number.MAX_SAFE_INTEGER;
-	var number = 1;
+	hnapi.number = 1;
 	function process_entries(entries) {
 		var hnapi_entries = [];
 
@@ -177,7 +177,7 @@
 			last_time = entries[i].date;
 
 			var hnapi_entry = to_hnapi(entries[i]);
-			hnapi_entry.i = number++;
+			hnapi_entry.i = hnapi.number++;
 			hnapi_entries.push(hnapi_entry);
 		}
 		return hnapi_entries;
