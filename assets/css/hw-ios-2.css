@@ -253,6 +253,7 @@ i.icon-loading{
 	color: #8e8e93;
 }
 .tableview-links li>a .number{
+	display: none;
 	text-align: center;
 	min-width: 2.5ex;
 	padding-right: 10px;
