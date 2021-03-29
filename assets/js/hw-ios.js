@@ -345,6 +345,7 @@
 		inactiveClassDelay: 1000
 	});
 
+	/*
 	tappable('#view-home .tableview-links li>a.detail-disclosure', {
 		noScroll: true,
 		noScrollDelay: 100,
@@ -352,6 +353,7 @@
 			location.hash = target.hash;
 		}
 	});
+	*/
 
 	tappable('button.comments-toggle', function(e, target){
 		hw.comments.toggle(target);
