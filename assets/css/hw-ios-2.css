@@ -237,8 +237,6 @@ i.icon-loading{
 	display: flex;
 }
 .tableview-links li>a{
-	display: -webkit-flex;
-	display: flex;
 	font-size: 17px;
 	font: -apple-system-body;
 	line-height: 1.2em;
@@ -330,17 +328,7 @@ i.icon-loading{
 	background-size: 8px 12.5px;
 }
 .tableview-links li>a.more-link{
-	cursor: pointer;
-	-webkit-touch-callout: none;
-	display: block;
-	padding: 20px 20px 20px calc(25px + 2.5ex);
-	-webkit-flex-grow: 1;
-	flex-grow: 1;
-	display: -webkit-flex;
-	display: flex;
-
 	color: #007aff;
-	cursor: pointer;
 	line-height: 3em;
 	padding: 10px;
 	text-align: center;
