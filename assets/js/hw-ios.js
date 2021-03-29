@@ -345,7 +345,6 @@
 		inactiveClassDelay: 1000
 	});
 
-	/*
 	tappable('#view-home .tableview-links li>a.detail-disclosure', {
 		noScroll: true,
 		noScrollDelay: 100,
@@ -353,7 +352,7 @@
 			location.hash = target.hash;
 		}
 	});
-	*/
+
 
 	tappable('button.comments-toggle', function(e, target){
 		hw.comments.toggle(target);
@@ -384,6 +383,7 @@
 	});
 
 	// Auto-reload news for some specific situations...
+	/*
 	w.addEventListener('pageshow', function(){
 		setTimeout(function(){
 			if (hw.currentView == 'home' && $('hwlist') && !amplify.store('hacker-news-cached')){
@@ -391,6 +391,7 @@
 			}
 		}, 1);
 	}, false);
+	*/
 
 	// Adjust comments view min-height, a little higher than the scroll area
 	// so that it's scrollable. Else, the whole page will scroll instead, which is rather 'ugly'.
