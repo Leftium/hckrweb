@@ -338,6 +338,12 @@ i.icon-loading{
 	flex-grow: 1;
 	display: -webkit-flex;
 	display: flex;
+
+	color: #007aff;
+	cursor: pointer;
+	line-height: 3em;
+	padding: 10px;
+	text-align: center;
 }
 .tableview-links li>a.more-link:before{
 	content: none !important;
