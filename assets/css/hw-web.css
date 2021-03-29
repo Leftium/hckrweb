@@ -218,7 +218,6 @@ pre, code{
 	pointer-events: none;
 }
 .tableview-links li>a .number{
-	font-weight: lighter;
 	color: #666d74;
 }
 .tableview-links li>a .story{
