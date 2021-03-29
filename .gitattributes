@@ -10,4 +10,5 @@
 package-lock.json   diff=nodiff
 yarn.lock           diff=nodiff
 *.min.js            diff=nodiff
+*.min.css           diff=nodiff
 *.js.map            diff=nodiff

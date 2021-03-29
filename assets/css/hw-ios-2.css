@@ -302,9 +302,9 @@ i.icon-loading{
 .tableview-links li>a.detail-disclosure{
 	-webkit-flex-grow: 1;
 	flex-grow: 1;
-	padding-right: 44px;
 }
 .tableview-links li>a.detail-disclosure-button{
+	display: none;
 	-webkit-touch-callout: none;
 	padding: 0;
 	margin-left: -44px;
